@@ -9,16 +9,16 @@ def ping():
 @app.route('/premium', methods=['POST'])
 def get_premium():
     body = request.json
-    cityTier = body['city_tier']
-    sumInsured = body['sum_insured']
-    tenure = body['tenure']
+    cityTier = int(body['city_tier'])
+    sumInsured = int(body['sum_insured'])
+    tenure = int(body['tenure'])
     maxAgeIndex = 0
     members = body['members']
-    maxAge = members[0]['age']
+    maxAge = int(members[0]['age'])
     membersPremium = []
     for i in range(len(members)):
-        if members[i]['age'] > maxAge:
-            maxAge =  members[i]['age']
+        if int(members[i]['age']) > maxAge:
+            maxAge =  int(members[i]['age'])
             maxAgeIndex = i
             
     for index, member in enumerate(members):
@@ -26,7 +26,7 @@ def get_premium():
             'city_tier': cityTier, 
             'sum_insured': sumInsured, 
             'tenure': tenure, 
-            'age': member['age']
+            'age': int(member['age'])
         })
         premium = {
             'base_rate': premiumRate['rate'],
