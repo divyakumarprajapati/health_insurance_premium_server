@@ -1,2 +1,2 @@
-eval "pip install -r requirements.txt"
+eval "pip install -r requirement.txt"
 eval "python addPremiumData.py"
